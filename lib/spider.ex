@@ -1,6 +1,9 @@
 defmodule Millar.Spider do
   @base_url "https://scp-wiki.wikidot.com/scp-{number}"
 
+  def get_scp(number) when is_integer(number),
+    do: Integer.to_string(number) |> get_scp()
+
   def get_scp(number) do
     case do_get_scp(number) do
       :get_scp_error -> raise("Unable to retrieve SCP-#{number}.")
