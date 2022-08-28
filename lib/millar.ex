@@ -1,18 +1,16 @@
 defmodule Millar do
-  @moduledoc """
-  Documentation for `Millar`.
-  """
-
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Millar.hello()
-      :world
-
+  Returns a string representing an org file with SCP article
   """
-  def hello do
-    :world
+  def get(scp_number) do
+    case :ets.lookup(:scp_collection, scp_number) do
+      [{scp_number, _content}] ->
+        # TODO: Write HTML to Org file
+        IO.inspect("#{scp_number}")
+
+      [] ->
+        # TODO: Cache into ETS when not found, do request and return data
+        :error
+    end
   end
 end
