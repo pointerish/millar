@@ -1,21 +1,9 @@
 # Millar
 
-**TODO: Add description**
+Millar is an Elixir application that fetches SCP foundation articles, stores them into an ETS table and makes them available through the `/scps/:scp_number` endpoint on port `13000`.
+The idea is to create a catalogue, so in this sense, the ETS table will likely get replaced by either DETS or SQLite.
 
-## Installation
+## Plans for the future
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `millar` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:millar, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/millar>.
+I plan to create an Emacs package to access Millar's catalogue. 
 
