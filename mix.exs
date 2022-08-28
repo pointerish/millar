@@ -22,6 +22,12 @@ defmodule Millar.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:cowboy, "~> 2.9"},
+      {:plug, "~> 1.13"},
+      {:plug_cowboy, "~> 2.5"},
+      {:jason, "~> 1.3"},
+      {:poison, "~> 5.0"},
+      {:ex_doc, "~> 0.28.3", only: :dev, runtime: false},
       {:httpoison, "~> 1.8"},
       {:floki, "~> 0.26.0"}
     ]
