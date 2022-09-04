@@ -16,6 +16,8 @@ defmodule Millar.Spider do
   end
 
   defp parse_scp_response(%HTTPoison.Response{status_code: 200, body: body}) do
+    Logger.info("Parsing SCP response.")
+
     body = Floki.parse_document!(body)
 
     %{
