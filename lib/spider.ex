@@ -48,14 +48,12 @@ defmodule Millar.Spider do
   defp pad_when_integer(number), do: "00#{number}"
 
   defp pad_when_string(number) when is_binary(number) do
-    if String.length(number) == 2 do
-      "0#{number}"
-    end
-  end
+    cond do
+      String.length(number) == 2 ->
+        "0#{number}"
 
-  defp pad_when_string(number) when is_binary(number) do
-    if String.length(number) == 1 do
-      "00#{number}"
+      String.length(number) == 1 ->
+        "00#{number}"
     end
   end
 end

@@ -23,10 +23,15 @@ defmodule Millar.Scps do
   end
 
   defp get(key) do
-    case :ets.lookup(:scps, "scps") do
-      [] -> nil
-      [{_key, nil}] -> nil
-      [{_key, value}] -> Map.get(value, key)
+    case :ets.lookup(:scps, key) do
+      [] ->
+        nil
+
+      [{_key, nil}] ->
+        nil
+
+      [{_key, value}] ->
+        {:ok, value}
     end
   end
 
