@@ -6,7 +6,7 @@ defmodule Millar.SpiderTest do
 
     assert %{title: _title, content: _content} = scp_data
     assert [{"div", [{"id", "page-title"}], _}] = scp_data[:title]
-    assert length(scp_data[:content]) != []
+    assert scp_data[:content] != []
   end
 
   test "spider gets scp data correctly when passed an integer valid SCP number < 10" do
@@ -14,7 +14,7 @@ defmodule Millar.SpiderTest do
 
     assert %{title: _title, content: _content} = scp_data
     assert [{"div", [{"id", "page-title"}], _}] = scp_data[:title]
-    assert length(scp_data[:content]) != []
+    assert scp_data[:content] != []
   end
 
   test "spider gets scp data correctly when passed an integer valid SCP number >= 10 and < 100" do
@@ -22,7 +22,7 @@ defmodule Millar.SpiderTest do
 
     assert %{title: _title, content: _content} = scp_data
     assert [{"div", [{"id", "page-title"}], _}] = scp_data[:title]
-    assert length(scp_data[:content]) != []
+    assert scp_data[:content] != []
   end
 
   test "spider returns the correct error tuple when passed a non-existant SCP number" do

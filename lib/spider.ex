@@ -4,11 +4,9 @@ defmodule Millar.Spider do
   @base_url "https://scp-wiki.wikidot.com/scp-{number}"
 
   def get_scp(number) when is_integer(number),
-    do: pad_when_integer(number) |> get_scp()
+    do: pad_when_integer(number) |> IO.inspect() |> get_scp()
 
   def get_scp(number) do
-    number = pad_when_string(number)
-
     case do_get_scp(number) do
       {:error, reason} -> {:error, reason}
       response -> parse_scp_response(response)
