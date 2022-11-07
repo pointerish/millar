@@ -18,7 +18,6 @@ defmodule Millar.Router do
 
   defp send_json_response(conn, response_data) do
     conn
-    |> put_resp_header("content-type", "application/html; charset=utf-8")
     |> send_resp(200, response_data)
   end
 end

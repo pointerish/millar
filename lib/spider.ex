@@ -4,7 +4,7 @@ defmodule Millar.Spider do
   @base_url "https://scp-wiki.wikidot.com/scp-{number}"
 
   def get_scp(number) when is_integer(number),
-    do: pad_when_integer(number) |> IO.inspect() |> get_scp()
+    do: pad_scp_number(number) |> get_scp()
 
   def get_scp(number) do
     case do_get_scp(number) do
@@ -41,17 +41,6 @@ defmodule Millar.Spider do
     end
   end
 
-  defp pad_when_integer(number) when number < 100 and number >= 10, do: "0#{number}"
-
-  defp pad_when_integer(number), do: "00#{number}"
-
-  defp pad_when_string(number) when is_binary(number) do
-    cond do
-      String.length(number) == 2 ->
-        "0#{number}"
-
-      String.length(number) == 1 ->
-        "00#{number}"
-    end
-  end
+  defp pad_scp_number(number) when number < 100 and number >= 10, do: "0#{number}"
+  defp pad_scp_number(number), do: "00#{number}"
 end
