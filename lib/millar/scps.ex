@@ -2,11 +2,7 @@ defmodule Millar.Scps do
   use GenServer
 
   @impl true
-  def init(arg) do
-    :ets.new(:scps, [:set, :public, :named_table])
-
-    {:ok, arg}
-  end
+  def init(_), do: Pockets.new(:scps)
 
   def start_link(arg) do
     GenServer.start_link(__MODULE__, arg, name: __MODULE__)
@@ -22,20 +18,7 @@ defmodule Millar.Scps do
     {:reply, put(key, value), state}
   end
 
-  defp get(key) do
-    case :ets.lookup(:scps, key) do
-      [] ->
-        nil
+  defp get(key), do: Pockets.get(:scps, key)
 
-      [{_key, nil}] ->
-        nil
-
-      [{_key, value}] ->
-        {:ok, value}
-    end
-  end
-
-  defp put(key, value) do
-    :ets.insert_new(:scps, {key, value})
-  end
+  defp put(key, value), do: Pockets.put(:scps, key, value)
 end
