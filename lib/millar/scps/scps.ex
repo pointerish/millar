@@ -1,8 +1,8 @@
-defmodule Millar.Scps do
+defmodule Millar.Scps.Cache do
   use GenServer
 
   @impl true
-  def init(_), do: Pockets.new(:scps)
+  def init(_), do: Pockets.new(:scps_cache)
 
   def start_link(arg) do
     GenServer.start_link(__MODULE__, arg, name: __MODULE__)
@@ -18,7 +18,7 @@ defmodule Millar.Scps do
     {:reply, put(key, value), state}
   end
 
-  defp get(key), do: Pockets.get(:scps, key)
+  defp get(key), do: Pockets.get(:scps_cache, key)
 
-  defp put(key, value), do: Pockets.put(:scps, key, value)
+  defp put(key, value), do: Pockets.put(:scps_cache, key, value)
 end

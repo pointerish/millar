@@ -16,7 +16,8 @@ defmodule Millar.Application do
           port: 13000
         ]
       ),
-      Millar.Scps
+      Millar.Scps.Persistance,
+      Millar.Scps.Cache
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

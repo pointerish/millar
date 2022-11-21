@@ -6,11 +6,9 @@ defmodule Millar do
   alias Millar.Scps
   alias Millar.Spider
 
-  def get(scp_number) do
-    scp_cache_size = System.get_env("SCP_CACHE_SIZE") || 5
+  @cache_size System.get_env("MILLAR_CACHE_SIZE") || 5
 
-    # TODO: Maybe consider Dets and Pockets library to store
-    # SCPs permanently and just use Ets for the latest N SCPs visited
+  def get(scp_number) do
     case GenServer.call(Scps, {:get, scp_number}) do
       {:ok, scp_data} ->
         Logger.info("Extracting SCP data from ETS.")
